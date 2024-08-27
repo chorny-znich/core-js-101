@@ -49,8 +49,8 @@ function getStringLength(value) {
  *   'John','Doe'      => 'Hello, John Doe!'
  *   'Chuck','Norris'  => 'Hello, Chuck Norris!'
  */
-function getStringFromTemplate(/* firstName, lastName */) {
-  throw new Error('Not implemented');
+function getStringFromTemplate(firstName, lastName) {
+  return `Hello, ${firstName} ${lastName}!`;
 }
 
 /**
@@ -63,8 +63,12 @@ function getStringFromTemplate(/* firstName, lastName */) {
  *   'Hello, John Doe!' => 'John Doe'
  *   'Hello, Chuck Norris!' => 'Chuck Norris'
  */
-function extractNameFromTemplate(/* value */) {
-  throw new Error('Not implemented');
+function extractNameFromTemplate(value) {
+  const firstNameIndex = value.indexOf(' ');
+  const lastNameIndex = value.indexOf(' ', firstNameIndex + 1);
+  const firstName = value.slice(firstNameIndex + 1, lastNameIndex);
+  const lastName = value.slice(lastNameIndex, value.length - 1);
+  return firstName + lastName;
 }
 
 /**
